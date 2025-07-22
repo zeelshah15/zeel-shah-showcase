@@ -11,8 +11,12 @@ import {
   Lightbulb, 
   Target,
   Zap,
-  GitBranch
+  GitBranch,
+  Sparkles,
+  Cpu
 } from "lucide-react";
+import aiBrain from "@/assets/ai-brain.jpg";
+import backendInfrastructure from "@/assets/backend-infrastructure.jpg";
 
 const SkillsSection = () => {
   const [inView, setInView] = useState(false);
@@ -107,6 +111,51 @@ const SkillsSection = () => {
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             A blend of technical prowess and interpersonal skills that drive innovation and collaboration
           </p>
+        </div>
+
+        {/* Visual Showcase */}
+        <div className={`grid lg:grid-cols-2 gap-12 mb-16 transition-all duration-800 ${
+          inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`} style={{ transitionDelay: '300ms' }}>
+          {/* AI & ML Section */}
+          <Card className="bg-gradient-card border-border/50 hover-glow overflow-hidden">
+            <div className="relative h-48 overflow-hidden">
+              <img 
+                src={aiBrain} 
+                alt="AI and Machine Learning" 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Brain className="w-6 h-6 text-primary" />
+                  <Sparkles className="w-4 h-4 text-accent animate-glow-pulse" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">AI & Machine Learning</h3>
+                <p className="text-sm text-muted-foreground">Building intelligent systems with cutting-edge ML algorithms</p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Backend Development Section */}
+          <Card className="bg-gradient-card border-border/50 hover-glow overflow-hidden">
+            <div className="relative h-48 overflow-hidden">
+              <img 
+                src={backendInfrastructure} 
+                alt="Backend Infrastructure" 
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Server className="w-6 h-6 text-primary" />
+                  <Cpu className="w-4 h-4 text-accent animate-glow-pulse" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground">Backend Development</h3>
+                <p className="text-sm text-muted-foreground">Scalable architectures and robust API solutions</p>
+              </div>
+            </div>
+          </Card>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, Trophy, TrendingUp } from "lucide-react";
+import { Calendar, MapPin, Trophy, TrendingUp, Sparkles, Zap, Award } from "lucide-react";
 
 const ExperienceSection = () => {
   const [inView, setInView] = useState(false);
@@ -46,29 +46,43 @@ const ExperienceSection = () => {
     {
       icon: TrendingUp,
       title: "Performance Optimization",
-      description: "Improved system performance by 40% through efficient algorithm implementation"
+      description: "Improved system performance by 40% through efficient algorithm implementation",
+      color: "text-primary"
     },
     {
       icon: Trophy,
       title: "AI Model Integration",
-      description: "Successfully integrated multiple AI models into production systems"
+      description: "Successfully integrated multiple AI models into production systems",
+      color: "text-accent"
     },
     {
-      icon: Calendar,
+      icon: Award,
       title: "Rapid Learning",
-      description: "Quickly adapted to new technologies and frameworks in fast-paced environment"
+      description: "Quickly adapted to new technologies and frameworks in fast-paced environment",
+      color: "text-secondary"
     }
   ];
 
   return (
-    <section id="experience" ref={sectionRef} className="py-20 px-6 bg-muted/30">
-      <div className="container mx-auto">
+    <section id="experience" ref={sectionRef} className="py-20 px-6 bg-muted/30 relative">
+      {/* Floating decorative elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <Sparkles className="absolute top-20 right-20 w-6 h-6 text-primary/30 animate-float" style={{ animationDelay: '0s' }} />
+        <Zap className="absolute top-1/3 left-10 w-5 h-5 text-accent/30 animate-float" style={{ animationDelay: '2s' }} />
+        <Trophy className="absolute bottom-1/4 right-16 w-7 h-7 text-secondary/30 animate-float" style={{ animationDelay: '4s' }} />
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <div className={`text-center mb-16 transition-all duration-800 ${
           inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-secondary bg-clip-text text-transparent">
-            Professional Journey
-          </h2>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Sparkles className="w-8 h-8 text-primary animate-glow-pulse" />
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-secondary bg-clip-text text-transparent">
+              Professional Journey
+            </h2>
+            <Zap className="w-8 h-8 text-accent animate-glow-pulse" />
+          </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Building innovative solutions and growing expertise in AI and backend development
           </p>
@@ -162,7 +176,7 @@ const ExperienceSection = () => {
                 style={{ transitionDelay: `${600 + index * 150}ms` }}
               >
                 <CardContent className="p-6 text-center">
-                  <achievement.icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <achievement.icon className={`w-12 h-12 ${achievement.color} mx-auto mb-4 animate-glow-pulse`} />
                   <h4 className="font-bold text-lg mb-3 text-foreground">
                     {achievement.title}
                   </h4>
